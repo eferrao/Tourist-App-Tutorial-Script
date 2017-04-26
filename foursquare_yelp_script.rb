@@ -1,16 +1,16 @@
 require 'HTTParty'
 
 puts "Welcome! Where are you?"
-puts "Latitude:"
+puts "Enter Latitude:"
 lat = gets.chomp
-puts "Longitude:"
+puts "Enter Longitude:"
 lon = gets.chomp
 
-url =
+foursquare_venues_url =
 "https://xap.ix-io.net/api/v1/foursquare/venues_by_lat_lons?filter%5Blatitude%5D=#{lat}&filter%5Blongitude%5D=#{lon}&fields%5Bvenues_by_lat_lons%5D=cross_street%2Clocation_latitude%2Clocation_longitude%2Cdistance%2Cpostal_code%2Ccountry_code%2Cneighborhood%2Ccity%2Cstate%2Ccountry%2Caddress%2Cformatted_address%2Cvenue_page_x_id%2Clongitude%2Clatitude%2Chas_perk%2Creferral_id%2Cstore_id%2Cvenue_rating_blacklisted%2Curl%2Cverified%2Cname%2Cx_id&sort=x_id&page%5Bnumber%5D=1&page%5Bsize%5D=100"
 
-header = {"Accept" => "application/json", "Authorization" => "Foursquare_tester:wXIr37UhbHkZ5Ey2fc1z5dTunC6PxK3G"}
-response = HTTParty.get(url, headers: header)
+header = {"Accept" => "application/json", "Authorization" => "INSERT YOUR XAPIX PROJECT KEY HERE!!" }
+response = HTTParty.get(foursquare_venues_url, headers: header)
 names = []
 response["venues_by_lat_lons"].each do |loc|
   if names.length < 10
